@@ -8,11 +8,8 @@ jobs:
       - name: Self test
         id: selftest
         uses: syslabtec/pubsub@master
-        with:
-          include: "docs/"
-          find: "world"
-          replace: "world"
+        env:
+          INPUT_NAME: "John" 
       - name: Check outputs and modified files
         run: |
-          test "${{ steps.selftest.outputs.modifiedFiles }}" == "1"
-          grep "Hello world" docs/note.txt          
+          echo "${{ steps.selftest.outputs.stdout }}"

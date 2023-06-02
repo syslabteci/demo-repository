@@ -15,4 +15,4 @@ jobs:
       - name: Check outputs and modified files
         run: |
           test "${{ steps.selftest.outputs.modifiedFiles }}" == "1"
-          grep "Hello there" docs/note.txt          
+          grep "Hello world" docs/note.txt          

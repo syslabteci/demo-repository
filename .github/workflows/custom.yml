@@ -11,7 +11,7 @@ jobs:
         with:
           include: "docs/"
           find: "world"
-          replace: "there"
+          replace: "world"
       - name: Check outputs and modified files
         run: |
           test "${{ steps.selftest.outputs.modifiedFiles }}" == "1"

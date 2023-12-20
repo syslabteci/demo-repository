@@ -26,6 +26,6 @@ jobs:
           # Perform your secure workflow tasks
 
       - name: Step1 
-        if: success()
+        if: ${{ success() }} 
         run: | 
           echo "Hello"

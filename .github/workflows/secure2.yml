@@ -13,14 +13,13 @@ env:
 
 jobs:
   secure_job:
+    if: ${{ github.event.inputs.secret_input == env.AUTHENTICATE_TOKEN }}  # Corrected
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
     steps:
-          
       - name: Allowed actions
-        if: ${{ github.event.inputs.secret_input == env.AUTHENTICATE_TOKEN }}  # Corrected
         run: |
           echo "Authorized actions will execute here"
           # Perform your secure workflow tasks

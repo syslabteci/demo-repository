@@ -26,12 +26,12 @@ jobs:
           echo ${{ github.event.inputs.secret_input }}
           echo ${{ secrets.SECRET_TOKEN }}
           echo $ {{ env.MY_ENV_VAR }}
-      - name: Match
-        env:
-          MY_ENV_VAR: ${{ secrets.SECRET_TOKEN }}
-        if: ${{ github.event.inputs.secret_input == env.MY_ENV_VAR }}
-        run: |
-          echo "Input matches secret!"
+      # - name: Match
+      #   env:
+      #     MY_ENV_VAR: ${{ secrets.SECRET_TOKEN }}
+      #   if: ${{ github.event.inputs.secret_input == env.MY_ENV_VAR }}
+      #   run: |
+      #     echo "Input matches secret!"
           
       - name: Check secret input
         if: ${{ github.event.inputs.secret_input != env.AUTHENTICATE_TOKEN }}  # Corrected
@@ -40,7 +40,7 @@ jobs:
           exit 1  # Terminate the workflow
 
       - name: Allowed actions
-        if: ${{ github.event.inputs.secret_input  == env.AUTHENTICATE_TOKEN }}  # Corrected
+        if: ${{ github.event.inputs.secret_input == env.AUTHENTICATE_TOKEN }}  # Corrected
         run: |
           echo "Authorized actions will execute here"
           # Perform your secure workflow tasks

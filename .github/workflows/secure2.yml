@@ -3,18 +3,19 @@ name: Secure Workflow 2
 
 on:
   workflow_dispatch:
-    inputs:
-      secret_input:
-        description: "Enter the secret token"
-        required: true
-        default: ""
+    # inputs:
+    #   secret_input:
+    #     description: "Enter the secret token"
+    #     required: true
+    #     default: ""
 env:
   AUTHENTICATE_TOKEN : ${{ secrets.SECRET_TOKEN }}
 
 jobs:
   secure_job:
     # if: github.event.inputs.secret_input == vars.VAR_AUTH 
-    if: github.actor == vars.VAR_AUTH   # Correctet
+    # if: github.actor == vars.VAR_AUTH
+    if: contains(vars.VAR_AUTH,github.actor)
     runs-on: ubuntu-latest
     permissions:
       contents: read

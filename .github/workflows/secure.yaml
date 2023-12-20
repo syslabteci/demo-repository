@@ -27,7 +27,7 @@ jobs:
       - name: Match
         env:
           MY_ENV_VAR: ${{ secrets.SECRET_TOKEN }}
-        if: ${{ github.event.inputs.user_input == env.MY_ENV_VAR }}
+        if: ${{ github.event.inputs.secret_input == env.MY_ENV_VAR }}
         run: |
           echo "Input matches secret!"
           

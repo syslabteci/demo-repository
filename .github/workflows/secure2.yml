@@ -13,8 +13,8 @@ env:
 
 jobs:
   secure_job:
-    # if: github.event.inputs.secret_input == vars.VAR_AUTH 
-    if: github.event.inputs.secret_input == secrets.SECRET_TOKEN # Correctet
+    if: github.event.inputs.secret_input == vars.VAR_AUTH 
+    # if: github.event.inputs.secret_input == secrets.SECRET_TOKEN # Correctet
     runs-on: ubuntu-latest
     permissions:
       contents: read

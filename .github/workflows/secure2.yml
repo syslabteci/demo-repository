@@ -1,0 +1,31 @@
+
+name: Secure Workflow 2
+
+on:
+  workflow_dispatch:
+    inputs:
+      secret_input:
+        description: "Enter the secret token"
+        required: true
+        default: ""
+env:
+  AUTHENTICATE_TOKEN : ${{ secrets.SECRET_TOKEN }}
+
+jobs:
+  secure_job:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+          
+      - name: Allowed actions
+        if: ${{ github.event.inputs.secret_input == env.AUTHENTICATE_TOKEN }}  # Corrected
+        run: |
+          echo "Authorized actions will execute here"
+          # Perform your secure workflow tasks
+
+      - name: Step1 
+        if: success()
+        run: | 
+          echo "Hello"

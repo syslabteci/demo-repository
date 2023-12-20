@@ -8,6 +8,8 @@ on:
         description: "Enter the secret token"
         required: true
         default: ""
+env:
+  AUTHENTICATE_TOKEN : ${{ secrets.SECRET_TOKEN }}
 
 jobs:
   secure_job:
@@ -32,7 +34,7 @@ jobs:
           echo "Input matches secret!"
           
       - name: Check secret input
-        if: ${{ github.event.inputs.secret_input != secrets.SECRET_TOKEN }}  # Corrected
+        if: ${{ github.event.inputs.secret_input != env.AUTHENTICATE_TOKEN }}  # Corrected
         run: |
           echo "Invalid secret input!"
           exit 1  # Terminate the workflow

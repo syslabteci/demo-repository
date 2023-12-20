@@ -1,3 +1,4 @@
+
 name: Secure Workflow
 
 on:
@@ -21,7 +22,9 @@ jobs:
           echo ${{ github.event.inputs.secret_input }}
           echo ${{ secrets.SECRET_TOKEN }}
       - name: Match
-        if: ${{ github.event.inputs.user_input == secrets.SECRET_TOKEN }}
+        env:
+          MY_ENV_VAR: ${{ secrets.SECRET_TOKEN }}
+        if: ${{ github.event.inputs.user_input == MY_ENV_VAR }}
         run: |
           echo "Input matches secret!"
           

@@ -31,11 +31,11 @@ jobs:
         run: |
           echo "Input matches secret!"
           
-      # - name: Check secret input
-      #   if: ${{ github.event.inputs.secret_input }} != ${{secrets.SECRET_TOKEN }}  # Corrected
-      #   run: |
-      #     echo "Invalid secret input!"
-      #     exit 1  # Terminate the workflow
+      - name: Check secret input
+        if: ${{ github.event.inputs.secret_input != secrets.SECRET_TOKEN }}  # Corrected
+        run: |
+          echo "Invalid secret input!"
+          exit 1  # Terminate the workflow
 
       # - name: Allowed actions
       #   if: ${{ github.event.inputs.secret_input }} == ${{secrets.SECRET_TOKEN }}  # Corrected

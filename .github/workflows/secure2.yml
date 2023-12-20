@@ -13,7 +13,7 @@ env:
 
 jobs:
   secure_job:
-    if: github.event.inputs.secret_input == '$env.AUTHENTICATE_TOKEN'  # Corrected
+    if: github.event.inputs.secret_input == '${{ env.AUTHENTICATE_TOKEN }}'  # Corrected
     runs-on: ubuntu-latest
     permissions:
       contents: read

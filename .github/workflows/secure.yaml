@@ -16,14 +16,17 @@ jobs:
       packages: write
 
     steps:
-      - name: Check secret input
-        if: ${{ github.event.inputs.secret_input }} != ${{secrets.SECRET_TOKEN }}  # Corrected
-        run: |
-          echo "Invalid secret input!"
-          exit 1  # Terminate the workflow
+      - name: Print
+        run: | 
+          echo ${{ github.event.inputs.secret_input }}
+      # - name: Check secret input
+      #   if: ${{ github.event.inputs.secret_input }} != ${{secrets.SECRET_TOKEN }}  # Corrected
+      #   run: |
+      #     echo "Invalid secret input!"
+      #     exit 1  # Terminate the workflow
 
-      - name: Allowed actions
-        if: ${{ github.event.inputs.secret_input }} == ${{secrets.SECRET_TOKEN }}  # Corrected
-        run: |
-          echo "Authorized actions will execute here"
-          # Perform your secure workflow tasks
+      # - name: Allowed actions
+      #   if: ${{ github.event.inputs.secret_input }} == ${{secrets.SECRET_TOKEN }}  # Corrected
+      #   run: |
+      #     echo "Authorized actions will execute here"
+      #     # Perform your secure workflow tasks

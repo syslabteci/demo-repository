@@ -13,7 +13,7 @@ env:
 
 jobs:
   secure_job:
-    if: github.event.inputs.secret_input == ${{secrets.SECRET_TOKEN }}  # Corrected
+    if: github.event.inputs.secret_input == 'werfhsd'  # Corrected
     runs-on: ubuntu-latest
     permissions:
       contents: read
